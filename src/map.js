@@ -2,11 +2,38 @@ import React from "react";
 import { Map, GoogleApiWrapper, HeatMap, } from "google-maps-react";
 import "./index.css";
 var mapStyles = {
-  width: '60%',
+  width: '100%',
   height: '100%'
+
 };
 
 export class MapContainer extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    };
+
+
+  }
+
+
+  handleClick = () => {
+
+    alert(' ')
+    
+    console.log(this.state);
+    
+
+    
+  }
+/* handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }*/
+
   render() {
 
 
@@ -30,6 +57,26 @@ export class MapContainer extends React.Component {
     return (
 
       <div className="map-container">
+
+       {/**  <form onSubmit={this.handleSubmit}>
+          <label>
+            Pick a selected radius:
+          <select value={this.state.value} onChange={this.handleChange}>
+              <option value="100 meters">100 meters</option>
+              <option value="1'000 meters">1'000 meters</option>
+              <option value="10'000 meters">10'000 meters</option>
+              <option value="100'000 meters">100'000 meters</option>
+            </select>
+          </label>
+          <input type="submit" value="Submit" />
+    </form>*/}
+        <div>
+          <input type="text" name="lat" onChange={ e => this.setState({ inputLat: e.target.value})} />
+          <input type="text" name="lat" onChange={ e => this.setState({ inputLat: e.target.value})} />
+          <input type="text" name="lat" onChange={ e => this.setState({ inputLat: e.target.value})} />
+          <button type="submit" onClick={this.handleClick} />
+        </div>
+
         <div id="chartone">
 
         </div>
@@ -47,9 +94,9 @@ export class MapContainer extends React.Component {
           <HeatMap
             gradient={gradient}
             positions={this.props.data}
-            opacity={.4}
+            opacity={1}
             style={mapStyles}
-            radius={2}
+            radius={10}
 
 
 
