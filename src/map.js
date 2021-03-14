@@ -1,14 +1,16 @@
 import React from "react";
-import { Map, GoogleApiWrapper, HeatMap } from "google-maps-react";
-
+import { Map, GoogleApiWrapper, HeatMap, } from "google-maps-react";
 import "./index.css";
+var mapStyles = {
+  width: '60%',
+  height: '100%'
+};
 
-class MapContainer extends React.Component {
+export class MapContainer extends React.Component {
   render() {
-    const mapStyles = {
-      width: '50%',
-      height: '50%'
-    };
+
+
+
     const gradient = [
       "rgba(0, 255, 255, 0)",
       "rgba(0, 255, 255, 1)",
@@ -26,32 +28,41 @@ class MapContainer extends React.Component {
       "rgba(255, 0, 0, 1)"
     ];
     return (
+
       <div className="map-container">
+        <div id="chartone">
+
+        </div>
+        <div id="charttwo">
+
+        </div>
         <Map
           google={this.props.google}
           className={"map"}
           zoom={4}
           initialCenter={this.props.center}
           onReady={this.handleMapReady}
-          width = {mapStyles}
-          height = {mapStyles}
+          style={mapStyles}
         >
           <HeatMap
             gradient={gradient}
             positions={this.props.data}
             opacity={.4}
-            radius={20}
-        
-          />
-        </Map>
+            style={mapStyles}
+            radius={2}
 
+
+
+
+          />
+
+        </Map>
       </div>
-     
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: "",
+  apiKey: "AIzaSyDpG-NeL-XGYAduQul2JenVr86HIPITEso",
   libraries: ["visualization"]
 })(MapContainer);
